@@ -85,7 +85,6 @@ massif.*
 \#[^\#/]+\#$
 .lock-wscript
 .lock-wafbuild
-src/ndnSIM
 configure
 toggle
 arbitrary_topo/
@@ -120,3 +119,7 @@ throughput_a.txt
 h_rtt_rto_late_prema_result_3_a.txt
 h_rtt_rto_late_prema_result_4_a.txt
 h_rtt_rto_late_prema_result_5_a.txt
+late-pre-rtt-avgrtt.p
+new.sh
+new3.sh
+power.sh
