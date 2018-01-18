@@ -1,0 +1,67 @@
+BEGIN {
+
+average_hop=0.000000
+average_rtt=0.000000
+average_w=0.000000
+no_content=0
+no_rtt_lower_rto=0
+no_rtt_higher_rto=0
+no_h_lower_H=0
+no_h_higher_H=0
+no_rtt_lower_avertt=0
+no_rtt_higher_avertt=0
+p_rto_lower_rtt=0
+p_rto_higher_rtt=0
+p_h_lower_H=0
+p_h_higher_H=0
+p_rtt_lower_avertt=0
+p_rtt_higher_avgrtt=0
+      }
+{
+seq = $1;
+hc = $2;
+rtt = $3;
+rto = $4;
+d = $5;
+w = $6;
+tc = $7;
+total = $8;
+
+if ($5 > 0 && $5 != "ave_w:") {no_rtt_lower_rto++;}
+else if($5 < 0) {no_rtt_higher_rto++;}
+
+if ( $1 == "ave_H:" ){
+ average_hop = $2;
+ } 
+ if ($3 == "ave_rtt:") {
+ average_rtt=$4;
+ }
+ if ($5 == "ave_w:") {
+ average_w = $6;
+ }
+ if ($7 == "no_content:") {
+ no_content = $8;
+ }
+ if ($11 == "p_late4:") {
+ p_late4 = $12;
+ }
+ if ($13 == "p_prem4:") {
+ p_prem4 = $14;
+ }
+ if ($15 == "p_late5:") {
+ p_late5 = $16;
+ }
+ if ($17 == "p_prem5:") {
+ p_prem5 = $18;
+ }
+ 
+if ($1 != "ave_H:" && $7 != 0 && $2 < (average_hop -1)) { no_h_lower_H++; } else if ($1 != "ave_H:" && $7 != 0 && $2 > average_hop+1) { no_h_higher_H++;}
+if ($1 != "ave_H:" && $7 != 0 && $3 < average_rtt) { no_rtt_lower_avertt++; } else if ($1 != "ave_H:" && $7 != 0 && $3 > average_rtt) { no_rtt_higher_avertt++;}
+
+    }
+	  
+END {
+printf ("%s %f\n %s %f\n %s %f\n %s %f\n %s %f\n %s %f\n %s %f\n %s %f\n %s %f\n %s %f\n","p_rtt_lower_avgrtt=", no_rtt_lower_avertt/no_content,"p_rtt_higher_avgrtt=", no_rtt_higher_avertt/no_content,"p_rto_lower_rtt=", no_rtt_higher_rto/no_content,"p_rto_higher_rtt=", no_rtt_lower_rto/no_content,"p_h_lower_H=", no_h_lower_H/no_content,"p_h_higher_H=", no_h_higher_H/no_content, "p_late4:", p_late4, "p_premature4:", p_prem4, "p_late5:", p_late5, "p_premature5:", p_prem5); 
+}
+
+

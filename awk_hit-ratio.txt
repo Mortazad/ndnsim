@@ -1,0 +1,128 @@
+BEGIN {
+
+hit1=0
+Mis1=0
+
+hit2=0
+Mis2=0
+
+hit3=0
+Mis3=0
+
+hit4=0
+Mis4=0
+
+hit5=0
+Mis5=0
+
+hit6=0
+Mis6=0
+
+hit7=0
+Mis7=0
+
+hit8=0
+Mis8=0
+
+hit9=0
+Mis9=0
+
+hit10=0
+Mis10=0
+
+hit11=0
+Mis11=0
+       
+      }
+{
+time = $1;
+node = $2;
+type = $3;
+packet = $4;
+
+
+ if ( $2 == "Rtr1" && $3 == "CacheHits" ) {
+ hit1=hit1+$4;
+ }
+ else if ($2 == "Rtr1" && $3 == "CacheMisses" ) {
+ Miss1=Miss1+$4;
+ }
+ 
+  else if ( $2 == "Rtr2" && $3 == "CacheHits" ) {
+ hit2=hit2+$4;
+ }
+ else if ($2 == "Rtr2" && $3 == "CacheMisses" ) {
+ Miss2=Miss2+$4;
+ }
+ 
+  else if ( $2 == "Rtr3" && $3 == "CacheHits" ) {
+ hit3=hit3+$4;
+ }
+ else if ($2 == "Rtr3" && $3 == "CacheMisses" ) {
+ Miss3=Miss3+$4;
+ }
+ 
+  else if ( $2 == "Rtr4" && $3 == "CacheHits" ) {
+ hit4=hit4+$4;
+ }
+ else if ($2 == "Rtr4" && $3 == "CacheMisses" ) {
+ Miss4=Miss4+$4;
+ }
+ 
+  else if ( $2 == "Rtr5" && $3 == "CacheHits" ) {
+ hit5=hit5+$4;
+ }
+ else if ($2 == "Rtr5" && $3 == "CacheMisses" ) {
+ Miss5=Miss5+$4;
+ }
+ 
+  else if ( $2 == "Rtr6" && $3 == "CacheHits" ) {
+ hit6=hit6+$4;
+ }
+ else if ($2 == "Rtr6" && $3 == "CacheMisses" ) {
+ Miss6=Miss6+$4;
+ }
+ 
+  else if ( $2 == "Rtr7" && $3 == "CacheHits" ) {
+ hit7=hit7+$4;
+ }
+ else if ($2 == "Rtr7" && $3 == "CacheMisses" ) {
+ Miss7=Miss7+$4;
+ }
+ 
+  else if ( $2 == "Rtr8" && $3 == "CacheHits" ) {
+ hit8=hit8+$4;
+ }
+ else if ($2 == "Rtr8" && $3 == "CacheMisses" ) {
+ Miss8=Miss8+$4;
+ }
+ 
+  else if ( $2 == "Rtr9" && $3 == "CacheHits" ) {
+ hit9=hit9+$4;
+ }
+ else if ($2 == "Rtr9" && $3 == "CacheMisses" ) {
+ Miss9=Miss9+$4;
+ }
+ 
+  else if ( $2 == "Rtr10" && $3 == "CacheHits" ) {
+ hit10=hit10+$4;
+ }
+ else if ($2 == "Rtr10" && $3 == "CacheMisses" ) {
+ Miss10=Miss10+$4;
+ }
+ 
+  else if ( $2 == "Rtr11" && $3 == "CacheHits" ) {
+ hit11=hit11+$4;
+ }
+ else if ($2 == "Rtr11" && $3 == "CacheMisses" ) {
+ Miss11=Miss11+$4;
+ }
+ 
+ }
+ 
+END {
+
+printf ("%f %f %f %f %f %f %f %f %f %f %f\n", hit1/(hit1+Miss1) , hit2/(hit2+Miss2) , hit3/(hit3+Miss3) , hit4/(hit4+Miss4) , hit5/(hit5+Miss5) , hit6/(hit6+Miss6) , hit7/(hit7+Miss7) , hit8/(hit8+Miss8) , hit9/(hit9+Miss9) , hit10/(hit10+Miss10) , hit11/(hit11+Miss11) );
+        
+}
+ 

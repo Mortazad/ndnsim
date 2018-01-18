@@ -9,7 +9,7 @@ mkdir arbitrary_topo
 sudo chmod 777 arbitrary_topo
 
 # determinig alpha parameter and run the simulation 100 times for each alpha
-for a in 0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0
+for a in 1.0 1.25 1.5 1.75 2.0
 do
 mkdir arbitrary_topo/alpha_$a
 sudo chmod 777 arbitrary_topo/alpha_$a

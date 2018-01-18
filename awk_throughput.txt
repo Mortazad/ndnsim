@@ -1,0 +1,56 @@
+BEGIN {
+
+timeprod11=1
+timeprod21=1
+timebtp1=1
+timebtp2=1
+timebtp3=1
+timebtp32=1
+timebtp4=1
+timebtp42=1      
+      }
+{
+event = $1;
+time = $2;
+pre = $3;
+seq = $4;
+nonce = $5;
+rtxc = $6;
+rto = $7;
+hopcount = $8;
+sendtime = $9;
+
+ if ( $1 == "Data_Received" && $3 == "/Prod11" ){
+ timeprod11=$2
+ }
+ else if ( $1 == "Data_Received" && $3 == "/Prod21" ){
+ timeprod21=$2
+ }
+ else if ( $1 == "Data_Received" && $3 == "/BTP1" ){
+ timebtp1=$2
+ }
+  else if ( $1 == "Data_Received" && $3 == "/BTP2" ){
+ timebtp2=$2
+ }
+  else if ( $1 == "Data_Received" && $3 == "/BTP3" ){
+ timebtp3=$2
+ }
+  else if ( $1 == "Data_Received" && $3 == "/BTP32" ){
+ timebtp32=$2
+ }
+  else if ( $1 == "Data_Received" && $3 == "/BTP4" ){
+ timebtp4=$2
+ }
+  else if ( $1 == "Data_Received" && $3 == "/BTP42" ){
+ timebtp42=$2
+ }
+
+
+    }
+      
+	  
+END {
+
+printf ("%f %f %f %f %f %f %f %f\n", 10000*1040/timeprod11, 10000*1040/timeprod21, 10000*1040/timebtp1, 10000*1040/timebtp2, 10000*1040/timebtp3, 10000*1040/timebtp32, 10000*1040/timebtp4, 10000*1040/timebtp42);
+        
+}

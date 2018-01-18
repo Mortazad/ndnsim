@@ -1,0 +1,85 @@
+BEGIN {
+
+timeprod11=0
+timeprod21=0
+timebtp1=0
+timebtp2=0
+timebtp3=0
+timebtp32=0
+timebtp4=0
+timebtp42=0 
+timebtp43=0
+timebtp44=0 
+timebtp45=0
+timebtp46=0 
+timebtp47=0
+timebtp48=0 
+timebtp49=0
+timebtp50=0 
+timebtp51=0
+      }
+{
+
+
+ if ( $1 == "p_rtt_lower_avgrtt=" ){
+ timeprod11=$2
+ }
+ else if ( $1 == "p_rtt_higher_avgrtt="){
+ timeprod21=$2
+ }
+ else if ( $1 == "p_rto_lower_rtt=" ){
+ timebtp1=$2
+ }
+  else if ( $1 == "p_rto_higher_rtt=" ){
+ timebtp2=$2
+ }
+  else if ( $1 == "p_h_lower_H=" ){
+ timebtp3=$2
+ }
+  else if ( $1 == "p_h_higher_H=" ){
+ timebtp32=$2
+ }
+  else if ( $1 == "loss_Probability:" ){
+ timebtp4=$2
+ }
+  else if ( $1 == "p_late:" ){
+ timebtp42=$2
+ }
+  else if ( $1 == "p_premature:" ){
+ timebtp43=$2
+ }
+ else if ( $1 == "p_late2:" ){
+ timebtp44=$2
+ }
+  else if ( $1 == "p_premature2:" ){
+ timebtp45=$2
+ }
+ else if ( $1 == "p_late3:" ){
+ timebtp46=$2
+ }
+  else if ( $1 == "p_premature3:" ){
+ timebtp47=$2
+ }
+ else if ( $1 == "p_late4:" ){
+ timebtp48=$2
+ }
+  else if ( $1 == "p_premature4:" ){
+ timebtp49=$2
+ }
+ else if ( $1 == "p_late5:" ){
+ timebtp50=$2
+ }
+  else if ( $1 == "p_premature5:" ){
+ timebtp51=$2
+ }
+
+
+
+    }
+      
+	  
+END {
+
+printf ("%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f\n", timeprod11, timeprod21, timebtp1, timebtp2, timebtp3, timebtp32, timebtp4, timebtp42, timebtp43, timebtp44, timebtp45,  timebtp46, timebtp47, timebtp48, timebtp49,  timebtp50, timebtp51);
+        
+}

@@ -1,0 +1,40 @@
+BEGIN {
+
+RTO=0.000000
+RTT=0.000000
+hcount=0
+D=0
+pn=0
+n=0
+p=0      
+      }
+{
+event = $1;
+time = $2;
+pre = $3;
+seq = $4;
+nonce = $5;
+rtxc = $6;
+rto = $7;
+hopcount = $8;
+sendtime = $9;
+
+ if ( $1 == "Data_Received" ){
+ RTO = RTO+$7;
+ rtt=$2-$9;
+ RTT= RTT+rtt;
+ hcount=hcount+$8;
+ D= D + (RTO - RTT);
+ W= W+(RTO/RTT)
+ pn = pn+$6;
+ n=n+1;
+
+ p=$4;
+    }
+      
+	  }
+	  
+END {
+printf ("%d %f %f %f %f %f %d %d\n", p, hcount/n, RTT/n, RTO/n, ((RTO/n) - (RTT/n)), ((RTO/n)/(RTT/n)), n, pn+n);
+        
+}
