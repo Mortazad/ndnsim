@@ -91,3 +91,7 @@ toggle
 arbitrary_topo/
 arbitrary_topo-1/
 arbitrary_topo-1 (copy)/
+rate-trace.txt
+cs-trace.txt
+drop-trace.txt
+app-delays-trace.txt
